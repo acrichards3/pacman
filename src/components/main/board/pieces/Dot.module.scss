@@ -1,0 +1,13 @@
+@import '~/components/Variables.scss';
+
+.dot {
+  border-radius: 50%;
+  background-color: $dotColor;
+  width: 5px;
+  height: 5px;
+
+  &.large {
+    width: 10px;
+    height: 10px;
+  }
+}
