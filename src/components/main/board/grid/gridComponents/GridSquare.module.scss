@@ -1,0 +1,11 @@
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  border: solid 1px green;
+
+  &.hideGrid {
+    border: none;
+  }
+}
