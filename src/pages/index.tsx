@@ -1,4 +1,3 @@
-import styles from './index.module.css';
 import Head from 'next/head';
 import Main from '~/components/main/Main';
 

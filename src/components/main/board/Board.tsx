@@ -3,7 +3,7 @@ import Grid from './grid/Grid';
 import styles from './Board.module.scss';
 
 export default function Board() {
-  const displayGrid = true;
+  const displayGrid = false;
   return (
     <div className={styles.board}>
       <Grid displayGrid={displayGrid} />
