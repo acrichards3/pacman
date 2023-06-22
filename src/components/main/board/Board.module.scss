@@ -1,0 +1,11 @@
+@import '~/components/Variables.scss';
+
+.board {
+  display: flex;
+  aspect-ratio: 1;
+  background-color: $boardColor;
+
+  &.grid {
+    display: flex;
+  }
+}
