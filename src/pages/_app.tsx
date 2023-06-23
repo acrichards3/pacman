@@ -10,7 +10,7 @@ const robotoCondensed = Roboto_Condensed({
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <main className={robotoCondensed.className}>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </main>
   );
 };

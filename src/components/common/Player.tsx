@@ -2,6 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './Player.module.scss';
 
+type Direction = 'up' | 'down' | 'left' | 'right' | 'none';
+
 interface PlayerProps {
   x: number;
   y: number;
@@ -9,21 +11,40 @@ interface PlayerProps {
 }
 
 export default function Player(props: PlayerProps) {
-  const mouthClasses = classNames(styles.mouth, {
-    [styles.loading as string]: props.status === 'loading',
-    [styles.moving as string]: props.status === 'moving',
-    [styles.dead as string]: props.status === 'dead',
-  });
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    console.log(e.key);
-  };
-
-  console.log('PLAYER POSITION:', `X: ${props.x}, Y: ${props.y}`);
+  const [direction, setDirection] = React.useState<Direction>('none');
+  if (typeof window !== 'undefined') {
+    document.addEventListener('keydown', (e) => {
+      switch (e.key) {
+        case 'ArrowUp':
+          setDirection('up');
+          break;
+        case 'ArrowDown':
+          setDirection('down');
+          break;
+        case 'ArrowLeft':
+          setDirection('left');
+          break;
+        case 'ArrowRight':
+          setDirection('right');
+          break;
+        default:
+          break;
+      }
+    });
+  }
 
   return (
-    <div className={styles.player} onKeyDown={handleKeyDown}>
-      <div className={mouthClasses}></div>
+    <div className={styles.player}>
+      <div
+        className={classNames(styles.mouth, {
+          [styles.loading as string]: props.status === 'loading',
+          [styles.moving as string]: props.status === 'moving',
+          [styles.dead as string]: props.status === 'dead',
+          [styles.up as string]: direction === 'up',
+          [styles.down as string]: direction === 'down',
+          [styles.left as string]: direction === 'left',
+        })}
+      ></div>
     </div>
   );
 }

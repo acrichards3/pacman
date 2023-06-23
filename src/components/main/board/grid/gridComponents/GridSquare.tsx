@@ -22,16 +22,21 @@ export default function GridSquare(props: GridSquareProps) {
   const handleTerrain = (): JSX.Element | null => {
     switch (props.terrainType) {
       case 'Z':
+        console.log('Red Ghost Spawn:', props.x, props.y);
         return <Ghost color="red" direction="right" />;
       case 'X':
+        console.log('Pink Ghost Spawn:', props.x, props.y);
         return <Ghost color="pink" direction="left" />;
       case 'C':
+        console.log('Blue Ghost Spawn:', props.x, props.y);
         return <Ghost color="blue" direction="right" />;
       case 'V':
+        console.log('Orange Ghost Spawn:', props.x, props.y);
         return <Ghost color="orange" direction="left" />;
       case 'E':
         return <GhostExit />;
       case 'S':
+        console.log('Player Spawn:', props.x, props.y);
         return <Player x={props.x} y={props.y} status={'moving'} />;
       case 'P':
         return <div>P</div>;

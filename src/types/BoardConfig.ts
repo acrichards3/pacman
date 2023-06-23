@@ -2,8 +2,8 @@
 // X = Pink Ghost spawn
 // C = Blue Ghost spawn
 // V = Orange Ghost spawn
-// E = Ghost exit
 // S = Pacman spawn
+// E = Ghost exit
 // P = Portal
 // B = Border
 // . = Empty
