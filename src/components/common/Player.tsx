@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './Player.module.scss';
 
-type Direction = 'up' | 'down' | 'left' | 'right' | 'none';
+type Direction = 'up' | 'down' | 'left' | 'right';
 
 interface PlayerProps {
   x: number;
@@ -11,7 +11,7 @@ interface PlayerProps {
 }
 
 export default function Player(props: PlayerProps) {
-  const [direction, setDirection] = React.useState<Direction>('none');
+  const [direction, setDirection] = React.useState<Direction>('right');
   if (typeof window !== 'undefined') {
     document.addEventListener('keydown', (e) => {
       switch (e.key) {
