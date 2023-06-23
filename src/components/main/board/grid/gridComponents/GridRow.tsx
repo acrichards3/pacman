@@ -17,7 +17,9 @@ export default function GridRow(props: GridRowProps) {
           <GridSquare
             x={x}
             y={props.y}
-            terrainType={x % 2 === 0 ? 'smallDot' : 'largeDot'}
+            terrainType={x % 2 === 0 ? 'wall' : 'edgeWall'}
+            wallOrientation="horizontal"
+            edgeWallPosition={'right'}
             displayGrid={props.displayGrid}
             key={square}
           />

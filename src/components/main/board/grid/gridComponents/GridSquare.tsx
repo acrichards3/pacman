@@ -2,11 +2,15 @@ import React from 'react';
 import classNames from 'classnames';
 import Dot from '../../pieces/Dot';
 import styles from './GridSquare.module.scss';
+import Wall from '../../pieces/Wall';
 import type { Terrain } from '~/types/Terrain';
+import type { Orientation } from '~/types/Orientation';
 
 interface GridSquareProps {
   displayGrid: boolean;
   terrainType: Terrain;
+  wallOrientation?: Orientation;
+  edgeWallPosition?: 'top' | 'right' | 'bottom' | 'left';
   x: number;
   y: number;
 }
@@ -15,11 +19,27 @@ export default function GridSquare(props: GridSquareProps) {
   const handleTerrain = () => {
     switch (props.terrainType) {
       case 'edgeWall':
-        return <div>EW</div>;
+        return (
+          <Wall
+            orientation={props.wallOrientation ?? 'horizontal'}
+            wallType="edgeWall"
+            edgeWallPosition={props.edgeWallPosition}
+          />
+        );
       case 'connectorWall':
-        return <div>CW</div>;
+        return (
+          <Wall
+            orientation={props.wallOrientation ?? 'horizontal'}
+            wallType="connectorWall"
+          />
+        );
       case 'wall':
-        return <div>NW</div>;
+        return (
+          <Wall
+            orientation={props.wallOrientation ?? 'horizontal'}
+            wallType="wall"
+          />
+        );
       case 'smallDot':
         return <Dot size="small" />;
       case 'largeDot':
