@@ -1,17 +1,22 @@
 import React from 'react';
 import GridRow from './gridComponents/GridRow';
+import GridSquare from './gridComponents/GridSquare';
 import styles from './Grid.module.scss';
+import { BOARD } from '../configurations/main';
+import type { Terrain } from '~/types/Terrain';
+import type { BoardConfig } from '~/types/BoardConfig';
 
 interface GridProps {
   displayGrid: boolean;
 }
 
 export default function Grid(props: GridProps) {
-  const rows = Array.from(Array(33).keys());
   return (
     <div className={styles.container}>
-      {rows.map((row, y) => {
-        return <GridRow y={y} displayGrid={props.displayGrid} key={row} />;
+      {BOARD.map((row, y) => {
+        return (
+          <GridRow key={y} displayGrid={props.displayGrid} y={y} row={row} />
+        );
       })}
     </div>
   );

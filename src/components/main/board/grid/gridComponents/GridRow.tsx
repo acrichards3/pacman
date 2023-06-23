@@ -1,27 +1,26 @@
 import React from 'react';
 import GridSquare from './GridSquare';
-import Dot from '../../pieces/Dot';
+import { BOARD } from '../../configurations/main';
 import styles from './GridRow.module.scss';
+import type { BoardConfig } from '~/types/BoardConfig';
 
 interface GridRowProps {
   displayGrid: boolean;
+  row: Array<BoardConfig>;
   y: number;
 }
 
 export default function GridRow(props: GridRowProps) {
-  const squaresPerRow = Array.from(Array(33).keys());
   return (
     <div className={styles.gridRow}>
-      {squaresPerRow.map((square, x) => {
+      {props.row.map((square, x) => {
         return (
           <GridSquare
+            key={x}
             x={x}
             y={props.y}
-            terrainType={x % 2 === 0 ? 'wall' : 'edgeWall'}
-            wallOrientation="horizontal"
-            edgeWallPosition={'right'}
+            terrainType={square}
             displayGrid={props.displayGrid}
-            key={square}
           />
         );
       })}
