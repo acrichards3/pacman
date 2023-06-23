@@ -4,6 +4,8 @@ import Dot from '../../pieces/Dot';
 import styles from './GridSquare.module.scss';
 import Wall from '../../pieces/Wall';
 import Player from '~/components/common/Player';
+import Ghost from '~/components/common/Ghost';
+import { useRootStore } from '~/store/RootStore';
 import type { BoardConfig } from '~/types/BoardConfig';
 import type { Orientation } from '~/types/Orientation';
 
@@ -19,8 +21,14 @@ interface GridSquareProps {
 export default function GridSquare(props: GridSquareProps) {
   const handleTerrain = (): JSX.Element | null => {
     switch (props.terrainType) {
-      case 'G':
-        return <div>G</div>;
+      case 'Z':
+        return <Ghost color="red" direction="right" />;
+      case 'X':
+        return <Ghost color="pink" direction="left" />;
+      case 'C':
+        return <Ghost color="blue" direction="right" />;
+      case 'V':
+        return <Ghost color="orange" direction="left" />;
       case 'E':
         return <div>-</div>;
       case 'S':

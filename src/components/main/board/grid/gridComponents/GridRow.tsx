@@ -1,6 +1,5 @@
 import React from 'react';
 import GridSquare from './GridSquare';
-import { BOARD } from '../../configurations/main';
 import styles from './GridRow.module.scss';
 import type { BoardConfig } from '~/types/BoardConfig';
 
