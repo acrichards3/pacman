@@ -24,7 +24,7 @@ export default function GridSquare(props: GridSquareProps) {
       case 'E':
         return <div>-</div>;
       case 'S':
-        return <Player isPlaying />;
+        return <Player x={props.x} y={props.y} status={'moving'} />;
       case 'P':
         return <div>P</div>;
       case 'B':
