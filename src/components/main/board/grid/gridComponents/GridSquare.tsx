@@ -4,11 +4,12 @@ import Dot from '../../pieces/Dot';
 import styles from './GridSquare.module.scss';
 import Wall from '../../pieces/Wall';
 import type { Terrain } from '~/types/Terrain';
+import type { BoardConfig } from '~/types/BoardConfig';
 import type { Orientation } from '~/types/Orientation';
 
 interface GridSquareProps {
   displayGrid: boolean;
-  terrainType: Terrain;
+  terrainType: BoardConfig;
   wallOrientation?: Orientation;
   edgeWallPosition?: 'top' | 'right' | 'bottom' | 'left';
   x: number;
@@ -16,36 +17,26 @@ interface GridSquareProps {
 }
 
 export default function GridSquare(props: GridSquareProps) {
-  const handleTerrain = () => {
+  const handleTerrain = (): JSX.Element | null => {
     switch (props.terrainType) {
-      case 'edgeWall':
-        return (
-          <Wall
-            orientation={props.wallOrientation ?? 'horizontal'}
-            wallType="edgeWall"
-            edgeWallPosition={props.edgeWallPosition}
-          />
-        );
-      case 'connectorWall':
-        return (
-          <Wall
-            orientation={props.wallOrientation ?? 'horizontal'}
-            wallType="connectorWall"
-          />
-        );
-      case 'wall':
-        return (
-          <Wall
-            orientation={props.wallOrientation ?? 'horizontal'}
-            wallType="wall"
-          />
-        );
-      case 'smallDot':
+      case 'G':
+        return <div>G</div>;
+      case 'E':
+        return <div>-</div>;
+      case 'S':
+        return <div>S</div>;
+      case 'P':
+        return <div>P</div>;
+      case 'B':
+        return <Wall />;
+      case '.':
+        return null;
+      case 'W':
+        return <Wall />;
+      case 'o':
         return <Dot size="small" />;
-      case 'largeDot':
+      case 'O':
         return <Dot size="large" />;
-      case 'empty':
-        return <div></div>;
       default:
         return null;
     }
