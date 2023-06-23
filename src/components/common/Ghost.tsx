@@ -16,6 +16,7 @@ import redDown from '~/../public/ghosts/redDown.gif';
 import redLeft from '~/../public/ghosts/redLeft.gif';
 import redRight from '~/../public/ghosts/redRight.gif';
 import Image from 'next/image';
+import styles from './Ghost.module.scss';
 
 interface GhostProps {
   color: 'pink' | 'blue' | 'orange' | 'red';
@@ -75,8 +76,7 @@ export default function Ghost(props: GhostProps) {
     <Image
       src={handleGhost()}
       alt={`Ghost ${props.color} facing ${props.direction}`}
-      width={28} // fix
-      height={28} // fix
+      className={styles.ghost}
     />
   );
 }

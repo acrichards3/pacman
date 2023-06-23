@@ -5,7 +5,7 @@ import type { BoardConfig } from '~/types/BoardConfig';
 // C = Blue Ghost spawn
 // V = Orange Ghost spawn
 // E = Ghost exit
-// S = Pacman spawn
+// S = Pacman spawn / position
 // P = Portal
 // B = Border
 // . = Empty

@@ -1,19 +1,18 @@
 import React from 'react';
 import GridRow from './gridComponents/GridRow';
-import GridSquare from './gridComponents/GridSquare';
 import styles from './Grid.module.scss';
 import { BOARD } from '../configurations/main';
-import type { Terrain } from '~/types/Terrain';
-import type { BoardConfig } from '~/types/BoardConfig';
+import { useRootStore } from '~/store/RootStore';
 
 interface GridProps {
   displayGrid: boolean;
 }
 
 export default function Grid(props: GridProps) {
+  const board = useRootStore().mainBoard.board;
   return (
     <div className={styles.container}>
-      {BOARD.map((row, y) => {
+      {board.map((row, y) => {
         return (
           <GridRow key={y} displayGrid={props.displayGrid} y={y} row={row} />
         );
