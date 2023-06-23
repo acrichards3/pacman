@@ -1,7 +1,7 @@
 import { useMain } from './boards/main';
-import { useSpawnedGhosts } from './gameState/spawnedGhosts';
+import { usePlayerScore } from './gameState/playerScore';
 
 export const useRootStore = () => ({
   mainBoard: useMain(),
-  spawnedGhosts: useSpawnedGhosts(),
+  playerScore: usePlayerScore(),
 });
