@@ -5,7 +5,7 @@ import styles from './GridSquare.module.scss';
 import Wall from '../../pieces/Wall';
 import Player from '~/components/common/Player';
 import Ghost from '~/components/common/Ghost';
-import { useRootStore } from '~/store/RootStore';
+import GhostExit from '../../pieces/GhostExit';
 import type { BoardConfig } from '~/types/BoardConfig';
 import type { Orientation } from '~/types/Orientation';
 
@@ -30,7 +30,7 @@ export default function GridSquare(props: GridSquareProps) {
       case 'V':
         return <Ghost color="orange" direction="left" />;
       case 'E':
-        return <div>-</div>;
+        return <GhostExit />;
       case 'S':
         return <Player x={props.x} y={props.y} status={'moving'} />;
       case 'P':
