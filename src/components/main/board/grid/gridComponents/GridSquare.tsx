@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Dot from '../../pieces/Dot';
 import styles from './GridSquare.module.scss';
 import Wall from '../../pieces/Wall';
-import type { Terrain } from '~/types/Terrain';
+import Player from '~/components/common/Player';
 import type { BoardConfig } from '~/types/BoardConfig';
 import type { Orientation } from '~/types/Orientation';
 
@@ -24,7 +24,7 @@ export default function GridSquare(props: GridSquareProps) {
       case 'E':
         return <div>-</div>;
       case 'S':
-        return <div>S</div>;
+        return <Player isPlaying />;
       case 'P':
         return <div>P</div>;
       case 'B':
