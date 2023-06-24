@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './Scoreboard.module.scss';
 import { useRootStore } from '~/store/RootStore';
+import styles from './Scoreboard.module.scss';
 
 export default function Scoreboard() {
   const highScore = useRootStore().playerScore.highScore;

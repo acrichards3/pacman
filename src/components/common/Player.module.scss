@@ -8,8 +8,8 @@
 }
 
 .mouth {
-  width: 100%;
-  height: 100%;
+  flex: 1;
+  aspect-ratio: 1;
   background-color: black;
   clip-path: polygon(100% 74%, 44% 50%, 108% 21%);
 

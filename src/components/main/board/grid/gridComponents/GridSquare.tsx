@@ -6,6 +6,8 @@ import Wall from '../../pieces/Wall';
 import Player from '~/components/common/Player';
 import Ghost from '~/components/common/Ghost';
 import GhostExit from '../../pieces/GhostExit';
+import { removeConnectedWallBorders } from '~/functions/Walls';
+import { useRootStore } from '~/store/RootStore';
 import type { BoardConfig } from '~/types/BoardConfig';
 import type { Orientation } from '~/types/Orientation';
 
@@ -19,6 +21,7 @@ interface GridSquareProps {
 }
 
 export default function GridSquare(props: GridSquareProps) {
+  const board = useRootStore().mainBoard.board;
   const handleTerrain = (): JSX.Element | null => {
     switch (props.terrainType) {
       case 'Z':
@@ -41,11 +44,20 @@ export default function GridSquare(props: GridSquareProps) {
       case 'P':
         return <div>P</div>;
       case 'B':
-        return <Wall />;
+        return (
+          <Wall
+            includeBorder={removeConnectedWallBorders(props.x, props.y, board)}
+            isBorder
+          />
+        );
       case '.':
         return null;
       case 'W':
-        return <Wall />;
+        return (
+          <Wall
+            includeBorder={removeConnectedWallBorders(props.x, props.y, board)}
+          />
+        );
       case 'o':
         return <Dot size="small" />;
       case 'O':

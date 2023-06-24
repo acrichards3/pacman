@@ -12,6 +12,7 @@ interface PlayerProps {
 
 export default function Player(props: PlayerProps) {
   const [direction, setDirection] = React.useState<Direction>('right');
+  const [position, setPosition] = React.useState({ x: props.x, y: props.y });
   if (typeof window !== 'undefined') {
     document.addEventListener('keydown', (e) => {
       switch (e.key) {
