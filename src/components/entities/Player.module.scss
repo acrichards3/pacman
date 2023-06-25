@@ -4,12 +4,15 @@
   aspect-ratio: 1;
   flex: 1;
   background-color: $pacmanColor;
+  width: 28px;
+  height: 28px;
+  z-index: 999;
   border-radius: 50%;
 }
 
 .mouth {
-  width: 100%;
-  height: 100%;
+  flex: 1;
+  aspect-ratio: 1;
   background-color: black;
   clip-path: polygon(100% 74%, 44% 50%, 108% 21%);
 

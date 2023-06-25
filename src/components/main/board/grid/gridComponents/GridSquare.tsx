@@ -1,11 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import Dot from '../../pieces/Dot';
 import styles from './GridSquare.module.scss';
-import Wall from '../../pieces/Wall';
-import Player from '~/components/common/Player';
-import Ghost from '~/components/common/Ghost';
-import GhostExit from '../../pieces/GhostExit';
+import { generateTerrain } from '~/functions/Terrain';
+import { useRootStore } from '~/store/RootStore';
 import type { BoardConfig } from '~/types/BoardConfig';
 import type { Orientation } from '~/types/Orientation';
 
@@ -19,41 +16,7 @@ interface GridSquareProps {
 }
 
 export default function GridSquare(props: GridSquareProps) {
-  const handleTerrain = (): JSX.Element | null => {
-    switch (props.terrainType) {
-      case 'Z':
-        console.log('Red Ghost Spawn:', props.x, props.y);
-        return <Ghost color="red" direction="right" />;
-      case 'X':
-        console.log('Pink Ghost Spawn:', props.x, props.y);
-        return <Ghost color="pink" direction="left" />;
-      case 'C':
-        console.log('Blue Ghost Spawn:', props.x, props.y);
-        return <Ghost color="blue" direction="right" />;
-      case 'V':
-        console.log('Orange Ghost Spawn:', props.x, props.y);
-        return <Ghost color="orange" direction="left" />;
-      case 'E':
-        return <GhostExit />;
-      case 'S':
-        console.log('Player Spawn:', props.x, props.y);
-        return <Player x={props.x} y={props.y} status={'moving'} />;
-      case 'P':
-        return <div>P</div>;
-      case 'B':
-        return <Wall />;
-      case '.':
-        return null;
-      case 'W':
-        return <Wall />;
-      case 'o':
-        return <Dot size="small" />;
-      case 'O':
-        return <Dot size="large" />;
-      default:
-        return null;
-    }
-  };
+  const board = useRootStore().mainBoard.board;
 
   return (
     <div
@@ -61,7 +24,12 @@ export default function GridSquare(props: GridSquareProps) {
         [styles.hideGrid as string]: !props.displayGrid,
       })}
     >
-      {handleTerrain()}
+      {generateTerrain({
+        x: props.x,
+        y: props.y,
+        terrainType: props.terrainType,
+        board: board,
+      })}
     </div>
   );
 }
