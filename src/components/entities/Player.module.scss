@@ -4,6 +4,9 @@
   aspect-ratio: 1;
   flex: 1;
   background-color: $pacmanColor;
+  width: 28px;
+  height: 28px;
+  z-index: 999;
   border-radius: 50%;
 }
 
